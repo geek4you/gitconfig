@@ -1,0 +1,78 @@
+# include requires git 1.7.10+ or some such
+[include]
+  path = .gitconfig-user
+  path = .gitconfig-github
+  path = .gitconfig-host
+  path = .gitconfig.host
+[color]
+  ui = true
+[push]
+  # not supported in git 1.7.x
+  #default = simple
+  default = current
+[alias]
+  a = add
+  aa = add -A
+  alias = "!f() { git config --global alias.$1 \"$2\"; }; f"
+  aliases = "!git config -l | grep alias | cut -c 7-"
+  ap = add -p
+  au = add -u
+  b = branch
+  br = branch -r
+  bv = branch -v
+  brv = branch -rv
+  c = commit
+  ca = commit --amend
+  can = commit --amend --no-edit
+  cf        = diff --name-only --diff-filter=U
+  cf = diff --diff-filter=U --name-only
+  cl = clone
+  cm = commit -m
+  cn = commit --no-edit
+  co = checkout
+  conflicts =  diff --diff-filter=U
+  conflicted = diff --diff-filter=U --name-only
+  d = diff
+  dn = diff --name-only
+  ds     = diff --staged
+  ghcl = "!f() { if [[ \"$1\" =~ \"/\" ]]; then git clone https://github.com/$1.git; else git clone https://github.com/geek4you/$1.git; fi }; f"
+  f = fetch
+  fixup    = commit --amend --no-edit
+  fu       = commit --amend --no-edit
+  l  = log
+  lg = log
+  last = diff --cached HEAD^
+  lp = log --pretty=oneline --stat --decorate
+  m = merge
+  p = push
+  pf = push --force
+  pl = pull
+  plr = pull --rebase
+  plup = "!git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+  r = reset
+  rb = rebase
+  rbi = rebase -i
+  rc       = commit --amend --no-edit
+  recommit = commit --amend --no-edit
+  reword = commit --amend
+  rt = remote
+  rtv = remote -v
+  rw     = commit --amend
+  s = status
+  sb = status -sb
+  sg     = diff --staged
+  sgn    = diff --staged --name-only
+  ss = status -s
+  st = status
+  staged = diff --staged
+  t = tag
+  tl = tag -l
+  this = diff --staged
+  unadd = reset HEAD
+  unalias = "!f() { git config --global --unset alias.$1; }; f"
+[url "https://"]
+	insteadOf = git://
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
