@@ -33,6 +33,7 @@
   conflicts =  diff --diff-filter=U
   conflicted = diff --diff-filter=U --name-only
   d = diff
+  di = diff
   dn = diff --name-only
   ds     = diff --staged
   ghcl = "!f() { if [[ \"$1\" =~ \"/\" ]]; then git clone https://github.com/$1.git; else git clone https://github.com/geek4you/$1.git; fi }; f"
@@ -47,7 +48,9 @@
   p = push
   pf = push --force
   pl = pull
+  pls = "!git stash; git pull; git stash apply"
   plr = pull --rebase
+  plrs = "!git stash; git pull --rebase; git stash apply"
   plup = "!git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   r = reset
   rb = rebase
